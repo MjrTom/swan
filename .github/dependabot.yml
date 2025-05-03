@@ -1,28 +1,27 @@
-version: 2
-registries:
-  nuget-feed-npm-pkg-github-com-unosquare:
-    type: nuget-feed
-    url: https://npm.pkg.github.com/unosquare
-    token: "${{secrets.NUGET_FEED_NPM_PKG_GITHUB_COM_UNOSQUARE_TOKEN}}"
-  nuget-feed-nuget-pkg-github-com-unosquare-index-json:
-    type: nuget-feed
-    url: https://nuget.pkg.github.com/unosquare/index.json
-    username: "${{secrets.NUGET_FEED_NUGET_PKG_GITHUB_COM_UNOSQUARE_INDEX_JSON_USERNAME}}"
-    password: "${{secrets.NUGET_FEED_NUGET_PKG_GITHUB_COM_UNOSQUARE_INDEX_JSON_PASSWORD}}"
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
+version: 2
 updates:
-- package-ecosystem: nuget
+- package-ecosystem: "npm"
   directory: "/"
   schedule:
-    interval: daily
-    time: "11:00"
-  open-pull-requests-limit: 10
-  registries:
-  - nuget-feed-npm-pkg-github-com-unosquare
-  - nuget-feed-nuget-pkg-github-com-unosquare-index-json
+    interval: monthly
+  open-pull-requests-limit: 60
+- package-ecosystem: "nuget"
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 20
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/"  # Still need to create global.json as of this edit
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
-    interval: daily
-    time: "11:00"
+    interval: monthly
   open-pull-requests-limit: 10
