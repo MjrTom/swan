@@ -46,7 +46,7 @@ jobs:
           7.0.x
           8.0.x
     - name: 🧑‍💻 Checkout codebase
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         token: ${{ secrets.github-token }}
         ref: ${{ github.ref_name }}
